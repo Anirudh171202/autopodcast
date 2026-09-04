@@ -5,6 +5,7 @@ is fully regenerated from it every run rather than edited incrementally, so
 it can never drift out of sync with what's actually in docs/episodes/.
 """
 
+import html
 import json
 import os
 from datetime import datetime, timedelta, timezone
@@ -90,3 +91,35 @@ def build_feed(index: list[dict], cfg: dict) -> None:
 
     config.DOCS_DIR.mkdir(parents=True, exist_ok=True)
     fg.rss_file(str(config.FEED_PATH))
+
+
+def build_index_html(index: list[dict], cfg: dict) -> None:
+    """A tiny landing page so the Pages root isn't a dead 404 — the feed URL
+    itself is what actually matters to a podcast app."""
+    rows = "\n".join(
+        f"<li><strong>{html.escape(ep['title'])}</strong> "
+        f"({ep['duration_hms']}) — "
+        f"<a href=\"{html.escape(ep['file'])}\">listen</a></li>"
+        for ep in sorted(index, key=lambda e: e["published"], reverse=True)
+    )
+    page = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{html.escape(cfg['podcast_title'])}</title>
+</head>
+<body style="font-family: sans-serif; max-width: 40em; margin: 2em auto; padding: 0 1em;">
+<h1>{html.escape(cfg['podcast_title'])}</h1>
+<p>{html.escape(cfg['podcast_description'])}</p>
+<p>Subscribe in your podcast app with this feed URL:
+<code>{html.escape(cfg['feed_base_url'])}/feed.xml</code></p>
+<h2>Episodes</h2>
+<ul>
+{rows or "<li>No episodes yet.</li>"}
+</ul>
+</body>
+</html>
+"""
+    config.DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    with open(config.DOCS_DIR / "index.html", "w") as f:
+        f.write(page)

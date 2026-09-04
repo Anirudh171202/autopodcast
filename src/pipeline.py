@@ -160,6 +160,7 @@ def main() -> None:
     index = feed.prune_old_episodes(index, cfg["episode_retention_days"])
     feed.save_index(index)
     feed.build_feed(index, cfg)
+    feed.build_index_html(index, cfg)
 
     history = [h for h in history if h["date"] != today_str]
     history.append({"date": today_str, "headlines": [i["headline"] for i in rundown["items"]]})

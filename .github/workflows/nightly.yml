@@ -2,10 +2,13 @@ name: Nightly Podcast
 
 on:
   schedule:
-    # 07:00 UTC ≈ 3:00am ET. GitHub may delay scheduled runs by up to ~30
-    # minutes under load; irrelevant for a 7am commute. Adjust for your
-    # timezone/DST as needed — GitHub Actions cron is always UTC.
-    - cron: "0 7 * * *"
+    # GitHub Actions cron is always UTC and does not shift for daylight
+    # saving, so a single fixed line would be off by an hour for half the
+    # year. Two triggers cover both UTC offsets Pacific Time uses; the guard
+    # step below no-ops whichever one fires outside its season, so the job
+    # actually does something only once a day, at 7am Pacific, year-round.
+    - cron: "0 15 * * *" # 7am PST (UTC-8) — standard time, roughly Nov-Mar
+    - cron: "0 14 * * *" # 7am PDT (UTC-7) — daylight time, roughly Mar-Nov
   workflow_dispatch: {} # lets you trigger a run manually from the Actions tab to test
 
 permissions:
@@ -17,23 +20,39 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Only proceed if it's ~7am Pacific right now
+        id: guard
+        run: |
+          HOUR=$(TZ="America/Los_Angeles" date +%H)
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$HOUR" != "07" ]; then
+            echo "It's $HOUR:00 Pacific — this is the other season's DST trigger, skipping."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-python@v5
+        if: steps.guard.outputs.run == 'true'
         with:
           python-version: "3.12"
 
       - name: Install ffmpeg
+        if: steps.guard.outputs.run == 'true'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - name: Install dependencies
+        if: steps.guard.outputs.run == 'true'
         run: pip install -r requirements.txt
 
       - name: Generate tonight's episode
+        if: steps.guard.outputs.run == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python -m src.pipeline
 
       - name: Commit and push new episode
+        if: steps.guard.outputs.run == 'true'
         run: |
           git config user.name "autopodcast-bot"
           git config user.email "actions@users.noreply.github.com"

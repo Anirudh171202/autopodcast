@@ -20,8 +20,6 @@ from .research import run_research
 from .script import run_script
 from .tts import synthesize
 
-MIN_WORDS = 500
-BASELINE_ITEMS_FOR_FULL_LENGTH = 7
 QUIET_DAY_WORDS = 90  # ~35 seconds: date + honest "nothing cleared the bar" note + weather
 
 
@@ -52,13 +50,14 @@ def sort_items_by_importance(rundown: dict) -> dict:
 
 
 def target_word_count(cfg: dict, item_count: int) -> int:
+    # No scaling by item count: with a depth-over-breadth research prompt, a
+    # handful of items can easily fill the full target on their own. The
+    # script step is separately instructed to scale down honestly if the
+    # material genuinely doesn't support the length — that's a better judge
+    # of "is this enough" than a raw item count is.
     if item_count == 0:
         return QUIET_DAY_WORDS
-    full_target = cfg["target_minutes"] * config.WORDS_PER_MINUTE
-    if item_count >= BASELINE_ITEMS_FOR_FULL_LENGTH:
-        return full_target
-    scaled = round(full_target * item_count / BASELINE_ITEMS_FOR_FULL_LENGTH)
-    return max(min(MIN_WORDS, full_target), scaled)
+    return cfg["target_minutes"] * config.WORDS_PER_MINUTE
 
 
 def build_episode_title(rundown: dict, today_str: str) -> str:

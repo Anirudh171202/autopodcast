@@ -3,19 +3,22 @@
 # no code changes needed.
 
 topics:
-  - Anything new and exciting in the computer systems field in the last day. If so, I'm interested in the nerdy details. I'm a systems software engineer so don't skimp. If not, skip entirely. Please skip generic talk.
-  - Any exciting or interesting deep dives or tech news that you think me (systems engineer who's pretty much caught up with the field) might enjoy from ycombinator hackernews feed right now. Small niche topics in any sub field is okay, as long as its interesting.
-  - The sports I'm interested are (Liverpool, Man U, Man City, Tot Hotspur, Arsenal, Chelsea, Aston Villa) ONLY premier league games, any Formula 1 race. (Tennis, Basketball, Cricket) only if there's a major/highly aanticipated game going on.  if so a quick 2-3 sentence summary of the game and how it went. 
-  - If there is time, anything major world news. ONLY if there is any major world news. 
-  - 1 brief sentence on the weather in the bay area today.
+  - Skip computer systems entirely unless there's something genuinely new and exciting from the last day. When there is, go deep on the technical details — I'm a systems software engineer, so don't hold back.
+  - For Hacker News, search the current front page for a deep dive or niche story a systems engineer who's already caught up on mainstream tech news would enjoy. Small or niche sub-fields are fine as long as they're genuinely interesting.
+  - For sports, Premier League games only, for Liverpool, Manchester United, Manchester City, Tottenham Hotspur, Arsenal, Chelsea, and Aston Villa — plus any Formula 1 race. For tennis, basketball, or cricket, only if there's a major or highly anticipated match; if so, a quick two-to-three-sentence summary of the result is enough.
+  - Only cover world news if it's genuinely major — skip this topic entirely otherwise.
+  - One brief sentence on the Bay Area weather forecast today.
 
 # Free-text guidance the research step will follow. Add/remove lines freely.
 instructions: |
-  In any of the topics that you're researching, I ONLY want news if it is based on events/releases in the last 24 hours. My style isn't summaries but I like to listen to a few topics but in great detail (if the topic is interesting ofc).
+  Only include events, releases, or developments from the last 24 hours — no rehashed trend pieces or "here's what's been happening" roundups.
+  I'd rather hear a handful of genuinely interesting stories in real depth than a broad summary of many — skip anything you'd only be able to cover thinly.
+  When you go deep on something, explain why it matters or how it works, not just what was announced.
+  For the Hacker News topic specifically, prefer something novel or niche over a broad industry narrative another topic might already cover.
 
 # Target runtime in minutes. The script step will scale this down honestly
 # on a slow news day rather than pad filler to hit it.
-target_minutes: 2
+target_minutes: 10
 
 # How many days back to look when deciding what's "already covered" so the
 # show doesn't repeat itself night to night.

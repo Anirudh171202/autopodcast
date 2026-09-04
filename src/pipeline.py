@@ -22,6 +22,7 @@ from .tts import synthesize
 
 MIN_WORDS = 500
 BASELINE_ITEMS_FOR_FULL_LENGTH = 7
+QUIET_DAY_WORDS = 90  # ~35 seconds: date + honest "nothing cleared the bar" note + weather
 
 
 def load_history() -> list[dict]:
@@ -51,11 +52,13 @@ def sort_items_by_importance(rundown: dict) -> dict:
 
 
 def target_word_count(cfg: dict, item_count: int) -> int:
+    if item_count == 0:
+        return QUIET_DAY_WORDS
     full_target = cfg["target_minutes"] * config.WORDS_PER_MINUTE
     if item_count >= BASELINE_ITEMS_FOR_FULL_LENGTH:
         return full_target
     scaled = round(full_target * item_count / BASELINE_ITEMS_FOR_FULL_LENGTH)
-    return max(MIN_WORDS, scaled)
+    return max(min(MIN_WORDS, full_target), scaled)
 
 
 def build_episode_title(rundown: dict, today_str: str) -> str:
@@ -73,6 +76,28 @@ def build_episode_description(rundown: dict) -> str:
     return "In this episode: " + "; ".join(headlines[:6]) + "."
 
 
+def load_cached_script(today_str: str) -> tuple[str, dict] | tuple[None, None]:
+    """If research+script already ran today (e.g. a prior attempt failed at
+    TTS), reuse that output instead of re-spending on Claude calls."""
+    script_path = config.SCRIPTS_DIR / f"{today_str}.txt"
+    rundown_path = config.SCRIPTS_DIR / f"{today_str}.json"
+    if script_path.exists() and rundown_path.exists():
+        with open(rundown_path) as f:
+            rundown = json.load(f)
+        with open(script_path) as f:
+            script_text = f.read()
+        return script_text, rundown
+    return None, None
+
+
+def save_cached_script(today_str: str, script_text: str, rundown: dict) -> None:
+    config.SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
+    with open(config.SCRIPTS_DIR / f"{today_str}.txt", "w") as f:
+        f.write(script_text)
+    with open(config.SCRIPTS_DIR / f"{today_str}.json", "w") as f:
+        json.dump(rundown, f, indent=2)
+
+
 def main() -> None:
     load_dotenv()
     cfg = config.load_topics_config()
@@ -80,36 +105,39 @@ def main() -> None:
     today_str = today.isoformat()
 
     history = load_history()
-    headlines_to_avoid = recent_headlines(history, cfg["lookback_days"])
 
-    client = anthropic.Anthropic()
+    script_text, rundown = load_cached_script(today_str)
+    if script_text is not None:
+        print(f"[{today_str}] found a cached script from an earlier run today — "
+              f"reusing it instead of re-running research/script. Delete "
+              f"state/scripts/{today_str}.* to force a fresh run.")
+        item_count = len(rundown["items"])
+    else:
+        headlines_to_avoid = recent_headlines(history, cfg["lookback_days"])
 
-    print(f"[{today_str}] researching...")
-    rundown = run_research(
-        client,
-        topics=cfg["topics"],
-        instructions=cfg["instructions"],
-        recent_headlines=headlines_to_avoid,
-        today_str=today_str,
-    )
-    rundown = sort_items_by_importance(rundown)
-    item_count = len(rundown["items"])
-    print(f"[{today_str}] found {item_count} item(s)."
-          f" insufficient_material={rundown.get('insufficient_material')}")
-    if rundown.get("editor_note"):
-        print(f"[{today_str}] editor note: {rundown['editor_note']}")
+        client = anthropic.Anthropic()
 
-    if item_count == 0:
-        print(f"[{today_str}] nothing to publish tonight — skipping episode.")
-        return
+        print(f"[{today_str}] researching...")
+        rundown = run_research(
+            client,
+            topics=cfg["topics"],
+            instructions=cfg["instructions"],
+            recent_headlines=headlines_to_avoid,
+            today_str=today_str,
+        )
+        rundown = sort_items_by_importance(rundown)
+        item_count = len(rundown["items"])
+        print(f"[{today_str}] found {item_count} item(s)."
+              f" insufficient_material={rundown.get('insufficient_material')}")
+        if rundown.get("editor_note"):
+            print(f"[{today_str}] editor note: {rundown['editor_note']}")
+        if item_count == 0:
+            print(f"[{today_str}] quiet day — publishing a short weather-only episode.")
 
-    words = target_word_count(cfg, item_count)
-    print(f"[{today_str}] writing script (~{words} words)...")
-    script_text = run_script(client, rundown, words)
-
-    config.SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
-    with open(config.SCRIPTS_DIR / f"{today_str}.txt", "w") as f:
-        f.write(script_text)
+        words = target_word_count(cfg, item_count)
+        print(f"[{today_str}] writing script (~{words} words)...")
+        script_text = run_script(client, rundown, words)
+        save_cached_script(today_str, script_text, rundown)
 
     mp3_rel_path = f"episodes/{today_str}.mp3"
     mp3_abs_path = str(config.DOCS_DIR / mp3_rel_path)
@@ -133,6 +161,7 @@ def main() -> None:
     feed.save_index(index)
     feed.build_feed(index, cfg)
 
+    history = [h for h in history if h["date"] != today_str]
     history.append({"date": today_str, "headlines": [i["headline"] for i in rundown["items"]]})
     save_history(history)
 

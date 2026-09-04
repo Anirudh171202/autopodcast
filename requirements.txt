@@ -5,3 +5,4 @@ python-dotenv>=1.0
 feedgen>=1.0
 mutagen>=1.47
 pydub>=0.25
+audioop-lts>=0.2; python_version >= "3.13"

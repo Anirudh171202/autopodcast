@@ -21,8 +21,7 @@ RESEARCH_SCHEMA = {
                     "bullets": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "minItems": 2,
-                        "maxItems": 5,
+                        "description": "3 to 5 short factual bullets covering this item.",
                     },
                     "source": {"type": "string"},
                     "source_date": {"type": "string"},
@@ -60,8 +59,21 @@ RESEARCH_SCHEMA = {
             "type": ["string", "null"],
             "description": "Honest note about material thinness or anything the host should know. Null if not needed.",
         },
+        "weather": {
+            "type": "string",
+            "description": "One brief sentence on today's Bay Area weather (via web search). "
+            "Always populate this regardless of how much news material exists — it is a "
+            "standing utility feature, not subject to the newsworthiness bar applied to items.",
+        },
     },
-    "required": ["date", "items", "deep_dive_headline", "insufficient_material", "editor_note"],
+    "required": [
+        "date",
+        "items",
+        "deep_dive_headline",
+        "insufficient_material",
+        "editor_note",
+        "weather",
+    ],
     "additionalProperties": False,
 }
 
@@ -77,7 +89,16 @@ Every item must clear this bar: a person who already follows these topics closel
 learn something from it. If you cannot find at least six such items across all topics \
 combined, say so plainly in editor_note and return fewer items — never pad with rehashed, \
 speculative, or evergreen content just to hit a quota. A short honest episode beats a \
-padded one."""
+padded one.
+
+Topics are listed in priority order. When there is more good material than fits in the \
+target runtime, prefer items from higher-priority topics — but don't drop a lower-priority \
+topic entirely just because a higher one is busy, if it genuinely has new material.
+
+Separately, always populate the `weather` field with one brief sentence on today's Bay \
+Area weather (search the web for it). This applies even on a day with zero qualifying \
+news items — weather is a standing utility feature the listener wants every day, not \
+something gated by newsworthiness."""
 
 
 def build_research_user_prompt(
@@ -91,7 +112,7 @@ def build_research_user_prompt(
     )
     return f"""Today's date: {today_str}
 
-Topics to cover:
+Topics to cover, in priority order (most important first):
 {topics_block}
 
 Standing instructions from the listener:
@@ -116,10 +137,16 @@ no rhetorical questions aimed at the listener, no recapping what was just said.
 - Structure: a cold open (roughly 20 seconds) that names today's date and previews the \
 rundown in one or two sentences; then the items in the order given, most important first; \
 then a deep-dive segment of about two to three minutes on the single most consequential \
-item, going beyond the headline into context and implications; then a brief sign-off.
+item, going beyond the headline into context and implications; then the weather line; \
+then a brief sign-off.
 - If the rundown has fewer items than usual, do not pad to hit the target length — a \
 shorter, honest episode is better than a padded one. If editor_note flags thin material, \
 you may briefly and plainly acknowledge a quiet news day in the cold open.
+- If items is empty, this is a quiet day by design, not an error: skip the normal \
+structure entirely and write a short cold open naming the date, one plain sentence \
+acknowledging nothing cleared the bar today (drawing on editor_note if present, without \
+reading it verbatim), the weather line, and a sign-off. A few sentences total is correct \
+— do not stretch this to the target length.
 
 Output ONLY the script text to be read aloud, as plain prose paragraphs separated by \
 blank lines. No stage directions, no speaker labels, no section headers."""

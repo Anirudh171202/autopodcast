@@ -33,6 +33,7 @@ def run_research(
                 "type": "web_search_20260209",
                 "name": "web_search",
                 "max_uses": 12,
+                "allowed_callers": ["direct"],
             }
         ],
         output_config={"format": {"type": "json_schema", "schema": RESEARCH_SCHEMA}},

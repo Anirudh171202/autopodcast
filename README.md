@@ -1,5 +1,11 @@
 # autopodcast
 
+
+## LLM Disclosure
+
+This repo is entirely LLM generated.
+
+## Summary
 Every night: research what's actually new on your topics, write a script for
 it, narrate it, and publish it as a private podcast feed — so it's sitting in
 your podcast app ready to play on tomorrow's commute. No manual step once
@@ -46,7 +52,6 @@ what's live; `docs/feed.xml` is fully regenerated from it every run.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env
 # edit .env and paste in ANTHROPIC_API_KEY and OPENAI_API_KEY
 ```
 

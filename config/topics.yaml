@@ -3,19 +3,19 @@
 # no code changes needed.
 
 topics:
-  - AI research and product launches
-  - Formula 1
-  - US personal finance / markets
+  - Anything new and exciting in the computer systems field in the last day. If so, I'm interested in the nerdy details. I'm a systems software engineer so don't skimp. If not, skip entirely. Please skip generic talk.
+  - Any exciting or interesting deep dives or tech news that you think me (systems engineer who's pretty much caught up with the field) might enjoy from ycombinator hackernews feed right now. Small niche topics in any sub field is okay, as long as its interesting.
+  - The sports I'm interested are (Liverpool, Man U, Man City, Tot Hotspur, Arsenal, Chelsea, Aston Villa) ONLY premier league games, any Formula 1 race. (Tennis, Basketball, Cricket) only if there's a major/highly aanticipated game going on.  if so a quick 2-3 sentence summary of the game and how it went. 
+  - If there is time, anything major world news. ONLY if there is any major world news. 
+  - 1 brief sentence on the weather in the bay area today.
 
 # Free-text guidance the research step will follow. Add/remove lines freely.
 instructions: |
-  Skip pure stock-price-movement stories with no underlying news.
-  Prefer primary sources (official blog posts, papers, filings, press releases)
-  over aggregator rewrites of the same story.
+  In any of the topics that you're researching, I ONLY want news if it is based on events/releases in the last 24 hours. My style isn't summaries but I like to listen to a few topics but in great detail (if the topic is interesting ofc).
 
 # Target runtime in minutes. The script step will scale this down honestly
 # on a slow news day rather than pad filler to hit it.
-target_minutes: 10
+target_minutes: 2
 
 # How many days back to look when deciding what's "already covered" so the
 # show doesn't repeat itself night to night.
@@ -31,5 +31,5 @@ episode_retention_days: 21
 # you create the GitHub repo and turn on Pages (see README).
 feed_base_url: "https://YOUR-GITHUB-USERNAME.github.io/autopodcast"
 
-podcast_title: "My Nightly Briefing"
+podcast_title: "Daily Briefing"
 podcast_description: "An automatically researched and narrated daily briefing, generated overnight."

@@ -29,7 +29,7 @@ episode_retention_days: 21
 # https://yourusername.github.io/autopodcast
 # Used to build absolute enclosure URLs in the RSS feed. Fill this in after
 # you create the GitHub repo and turn on Pages (see README).
-feed_base_url: "https://YOUR-GITHUB-USERNAME.github.io/autopodcast"
+feed_base_url: "https://anirudh171202.github.io/autopodcast"
 
 podcast_title: "Daily Briefing"
 podcast_description: "An automatically researched and narrated daily briefing, generated overnight."

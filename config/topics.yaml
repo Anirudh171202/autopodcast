@@ -1,0 +1,35 @@
+# Topics and standing instructions for the nightly podcast.
+# Edit this file any time you want — the next run picks it up automatically,
+# no code changes needed.
+
+topics:
+  - AI research and product launches
+  - Formula 1
+  - US personal finance / markets
+
+# Free-text guidance the research step will follow. Add/remove lines freely.
+instructions: |
+  Skip pure stock-price-movement stories with no underlying news.
+  Prefer primary sources (official blog posts, papers, filings, press releases)
+  over aggregator rewrites of the same story.
+
+# Target runtime in minutes. The script step will scale this down honestly
+# on a slow news day rather than pad filler to hit it.
+target_minutes: 10
+
+# How many days back to look when deciding what's "already covered" so the
+# show doesn't repeat itself night to night.
+lookback_days: 5
+
+# How many days an episode stays live in the RSS feed / docs/episodes/ before
+# the pipeline deletes it. Keeps the git repo from growing forever.
+episode_retention_days: 21
+
+# Base URL where docs/ is served once GitHub Pages is enabled, e.g.
+# https://yourusername.github.io/autopodcast
+# Used to build absolute enclosure URLs in the RSS feed. Fill this in after
+# you create the GitHub repo and turn on Pages (see README).
+feed_base_url: "https://YOUR-GITHUB-USERNAME.github.io/autopodcast"
+
+podcast_title: "My Nightly Briefing"
+podcast_description: "An automatically researched and narrated daily briefing, generated overnight."

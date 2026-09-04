@@ -1,0 +1,42 @@
+name: Nightly Podcast
+
+on:
+  schedule:
+    # 07:00 UTC ≈ 3:00am ET. GitHub may delay scheduled runs by up to ~30
+    # minutes under load; irrelevant for a 7am commute. Adjust for your
+    # timezone/DST as needed — GitHub Actions cron is always UTC.
+    - cron: "0 7 * * *"
+  workflow_dispatch: {} # lets you trigger a run manually from the Actions tab to test
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate tonight's episode
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python -m src.pipeline
+
+      - name: Commit and push new episode
+        run: |
+          git config user.name "autopodcast-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/ state/
+          git diff --cached --quiet || git commit -m "Nightly episode: $(date -u +%Y-%m-%d)"
+          git push

@@ -1,0 +1,7 @@
+anthropic>=0.140.0
+openai>=1.50.0
+pyyaml>=6.0
+python-dotenv>=1.0
+feedgen>=1.0
+mutagen>=1.47
+pydub>=0.25

@@ -5,10 +5,15 @@ on:
     # GitHub Actions cron is always UTC and does not shift for daylight
     # saving, so a single fixed line would be off by an hour for half the
     # year. Two triggers cover both UTC offsets Pacific Time uses; the guard
-    # step below no-ops whichever one fires outside its season, so the job
-    # actually does something only once a day, at 7am Pacific, year-round.
-    - cron: "0 15 * * *" # 7am PST (UTC-8) — standard time, roughly Nov-Mar
-    - cron: "0 14 * * *" # 7am PDT (UTC-7) — daylight time, roughly Mar-Nov
+    # step below skips whichever one runs when today's episode already
+    # exists, so only one of them actually does anything each day.
+    #
+    # Both are offset a few minutes past the hour deliberately — GitHub's own
+    # docs warn that schedules firing exactly on the hour queue behind
+    # everyone else's, causing multi-hour delays. Off-the-hour is far more
+    # likely to actually run close to 7am rather than mid-morning.
+    - cron: "13 15 * * *" # ~7am PST (UTC-8) — standard time, roughly Nov-Mar
+    - cron: "13 14 * * *" # ~7am PDT (UTC-7) — daylight time, roughly Mar-Nov
   workflow_dispatch: {} # lets you trigger a run manually from the Actions tab to test
 
 permissions:
@@ -20,12 +25,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Only proceed if it's ~7am Pacific right now
+      - name: Skip if today's episode already ran
         id: guard
         run: |
-          HOUR=$(TZ="America/Los_Angeles" date +%H)
-          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$HOUR" != "07" ]; then
-            echo "It's $HOUR:00 Pacific — this is the other season's DST trigger, skipping."
+          TODAY_SCRIPT="state/scripts/$(date -u +%Y-%m-%d).txt"
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ -f "$TODAY_SCRIPT" ]; then
+            echo "$TODAY_SCRIPT already exists — today's episode was already generated"
+            echo "by the other seasonal trigger or a manual run. Skipping."
             echo "run=false" >> "$GITHUB_OUTPUT"
           else
             echo "run=true" >> "$GITHUB_OUTPUT"

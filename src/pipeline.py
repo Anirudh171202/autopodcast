@@ -9,7 +9,8 @@ docs/episodes/, regenerates docs/feed.xml, and updates state/.
 
 import json
 import os
-from datetime import date
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import anthropic
 import mutagen.mp3
@@ -100,8 +101,22 @@ def save_cached_script(today_str: str, script_text: str, rundown: dict) -> None:
 def main() -> None:
     load_dotenv()
     cfg = config.load_topics_config()
-    today = date.today()
+    # Pacific-local, not the runner's system clock (UTC on GitHub Actions) —
+    # this podcast's "today" is the listener's day, and a UTC-anchored date
+    # can be a full day ahead of Pacific for any run between 5pm and
+    # midnight Pacific, which then throws off the research step's "last 24
+    # hours" window relative to what actually happened recently.
+    now_pacific = datetime.now(ZoneInfo("America/Los_Angeles"))
+    today = now_pacific.date()
     today_str = today.isoformat()
+    # Full timestamp (not just the date) for the research prompt — knowing
+    # only the date, a model can't tell whether a same-day scheduled event
+    # (e.g. a race starting "9am ET") is still ahead or already over.
+    now_str = now_pacific.strftime("%A, %B %-d, %Y, %-I:%M %p %Z")
+    # Plain date for the script's cold open — deliberately not sourced from
+    # the research model's own output (it self-reported the date once and
+    # garbled it near midnight); the code already knows this reliably.
+    date_str = today.strftime("%A, %B %-d, %Y")
 
     history = load_history()
 
@@ -122,7 +137,7 @@ def main() -> None:
             topics=cfg["topics"],
             instructions=cfg["instructions"],
             recent_headlines=headlines_to_avoid,
-            today_str=today_str,
+            now_str=now_str,
         )
         rundown = sort_items_by_importance(rundown)
         item_count = len(rundown["items"])
@@ -135,7 +150,7 @@ def main() -> None:
 
         words = target_word_count(cfg, item_count)
         print(f"[{today_str}] writing script (~{words} words)...")
-        script_text = run_script(client, rundown, words)
+        script_text = run_script(client, rundown, words, date_str)
         save_cached_script(today_str, script_text, rundown)
 
     mp3_rel_path = f"episodes/{today_str}.mp3"

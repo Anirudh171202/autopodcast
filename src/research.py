@@ -19,10 +19,10 @@ def run_research(
     topics: list[str],
     instructions: str,
     recent_headlines: list[str],
-    today_str: str,
+    now_str: str,
     model: str = config.RESEARCH_MODEL,
 ) -> dict:
-    user_prompt = build_research_user_prompt(topics, instructions, recent_headlines, today_str)
+    user_prompt = build_research_user_prompt(topics, instructions, recent_headlines, now_str)
 
     with client.messages.stream(
         model=model,

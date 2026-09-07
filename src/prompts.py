@@ -10,7 +10,6 @@ import json
 RESEARCH_SCHEMA = {
     "type": "object",
     "properties": {
-        "date": {"type": "string"},
         "items": {
             "type": "array",
             "items": {
@@ -69,7 +68,6 @@ RESEARCH_SCHEMA = {
         },
     },
     "required": [
-        "date",
         "items",
         "deep_dive_headline",
         "insufficient_material",
@@ -90,6 +88,12 @@ Prefer primary sources (official blogs, filings, papers, press releases) and rep
 original reporting over aggregator rewrites of the same story. If a topic names a specific \
 source or community (e.g. "Hacker News"), search that source directly rather than relying \
 on generic web results about it.
+
+You are given the current date AND time below, not just a date — use both. For a scheduled \
+or live event (a sports match, an earnings call, a product launch event), a page describing \
+it in future tense ("kicks off at 9am ET") does not mean it's still upcoming — check that \
+time against the current time you were given before deciding whether it has already \
+happened. Don't default to assuming a same-day event is still ahead of you.
 
 Every item must clear this bar: a person who already follows these topics closely would \
 learn something concrete from it — a specific event, release, launch, paper, or incident. \
@@ -114,7 +118,7 @@ something gated by newsworthiness."""
 
 
 def build_research_user_prompt(
-    topics: list[str], instructions: str, recent_headlines: list[str], today_str: str
+    topics: list[str], instructions: str, recent_headlines: list[str], now_str: str
 ) -> str:
     topics_block = "\n".join(f"- {t}" for t in topics)
     covered_block = (
@@ -122,7 +126,7 @@ def build_research_user_prompt(
         if recent_headlines
         else "(none yet — this is the first episode)"
     )
-    return f"""Today's date: {today_str}
+    return f"""Current date and time: {now_str}
 
 Topics to cover, in priority order (most important first):
 {topics_block}
@@ -131,7 +135,10 @@ Standing instructions from the listener:
 {instructions.strip() or "(none)"}
 
 Headlines already covered in recent episodes — do not repeat these unless there is a \
-genuine, material update since then:
+genuine, material update since then. A prior headline about something pending (a penalty, \
+a nomination, a scheduled event, an upcoming match) does NOT mean its eventual outcome is \
+already covered — the actual result, once it happens, is exactly the kind of material \
+update that belongs in today's episode, not a repeat:
 {covered_block}
 
 Search the web and produce today's rundown as JSON matching the required schema."""
@@ -150,8 +157,9 @@ no rhetorical questions aimed at the listener, no recapping what was just said.
 one (sports, weather), use a short, plain transition that signals the shift — a bare topic \
 label like "In sports:" is enough. Never juxtapose them with no signal at all, and never \
 editorialize about the tonal shift itself.
-- Structure: a cold open (roughly 20 seconds) that names today's date and previews the \
-rundown in one or two sentences; then the items in the order given, most important first, \
+- Structure: a cold open (roughly 20 seconds) that names today's date — use exactly the \
+date given to you below, not one inferred from an item's source or content — and previews \
+the rundown in one or two sentences; then the items in the order given, most important first, \
 each given real space to explain why it matters or how it works — not just what was \
 announced, since there are usually few enough items that none should get bare headline \
 treatment; then a deep-dive segment of about two to three minutes on the single most \
@@ -170,8 +178,10 @@ Output ONLY the script text to be read aloud, as plain prose paragraphs separate
 blank lines. No stage directions, no speaker labels, no section headers."""
 
 
-def build_script_user_prompt(rundown: dict, target_words: int) -> str:
-    return f"""Target length: approximately {target_words} words (~{target_words // 155} \
+def build_script_user_prompt(rundown: dict, target_words: int, date_str: str) -> str:
+    return f"""Today's date, for the cold open: {date_str}
+
+Target length: approximately {target_words} words (~{target_words // 155} \
 minutes at conversational pace). Scale down honestly if the rundown below doesn't support \
 that length — do not pad.
 

@@ -10,9 +10,10 @@ def run_script(
     client: anthropic.Anthropic,
     rundown: dict,
     target_words: int,
+    date_str: str,
     model: str = config.SCRIPT_MODEL,
 ) -> str:
-    user_prompt = build_script_user_prompt(rundown, target_words)
+    user_prompt = build_script_user_prompt(rundown, target_words, date_str)
 
     with client.messages.stream(
         model=model,

@@ -65,4 +65,19 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add docs/ state/
           git diff --cached --quiet || git commit -m "Nightly episode: $(date -u +%Y-%m-%d)"
-          git push
+          # A plain push can be rejected if main moved (e.g. a manual push
+          # landed while this job was generating the episode). Rebase onto
+          # whatever's current and retry a few times before giving up —
+          # this job's changes (docs/, state/) essentially never overlap
+          # with a human edit's (src/, config/), so this should be conflict-free.
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt/5) — fetching and rebasing onto origin/main."
+            git fetch origin main
+            git rebase origin/main
+            sleep $((attempt * 3))
+          done
+          echo "::error::Failed to push after 5 attempts."
+          exit 1

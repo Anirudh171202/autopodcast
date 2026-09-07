@@ -98,7 +98,7 @@ sensitive lives in it), that's fine too.
 
 In the repo's **Actions** tab, run "Nightly Podcast" via the manual
 "Run workflow" button (that's what `workflow_dispatch` in the workflow file
-is for) rather than waiting for the 7am UTC cron. Confirm it commits a new
+is for) rather than waiting for the 5am Pacific cron. Confirm it commits a new
 episode and the feed updates.
 
 ### 5. Subscribe

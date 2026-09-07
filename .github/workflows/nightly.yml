@@ -10,10 +10,11 @@ on:
     #
     # Both are offset a few minutes past the hour deliberately — GitHub's own
     # docs warn that schedules firing exactly on the hour queue behind
-    # everyone else's, causing multi-hour delays. Off-the-hour is far more
-    # likely to actually run close to 7am rather than mid-morning.
-    - cron: "13 15 * * *" # ~7am PST (UTC-8) — standard time, roughly Nov-Mar
-    - cron: "13 14 * * *" # ~7am PDT (UTC-7) — daylight time, roughly Mar-Nov
+    # everyone else's, causing multi-hour delays. Observed delay on this repo
+    # has been ~2.5-3 hours even off-the-hour, so this targets 5am Pacific
+    # rather than 7am, to actually land close to 7am once delayed.
+    - cron: "13 13 * * *" # ~5am PST (UTC-8) — standard time, roughly Nov-Mar
+    - cron: "13 12 * * *" # ~5am PDT (UTC-7) — daylight time, roughly Mar-Nov
   workflow_dispatch: {} # lets you trigger a run manually from the Actions tab to test
 
 permissions:

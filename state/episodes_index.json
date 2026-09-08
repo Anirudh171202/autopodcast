@@ -25,5 +25,14 @@
     "published": "2026-09-07T17:44:22.008123+00:00",
     "duration_hms": "0:00:34",
     "size_bytes": 416205
+  },
+  {
+    "date": "2026-09-08",
+    "title": "2026-09-08 briefing",
+    "description": "In this episode: AI handles incidents, engineers lose touch with their systems \u2014 the skill debt problem in automated SRE; Liquid Network hack: Hackers drain $320M in Bitcoin from Blockstream sidechain, return 3,400 BTC but keep $47M; 2026 Spanish Grand Prix preview: Madring circuit debuts Friday; Kimi Antonelli favored after dominant season; Bay Area weather: Mostly sunny and very warm today with highs reaching 80\u00b0F at coast to upper 90s inland; Heat Advisory issued for Wednesday-Thursday.",
+    "file": "episodes/2026-09-08.mp3",
+    "published": "2026-09-08T16:37:48.208765+00:00",
+    "duration_hms": "0:08:09",
+    "size_bytes": 5872653
   }
 ]

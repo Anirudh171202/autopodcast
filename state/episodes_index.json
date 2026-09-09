@@ -34,5 +34,14 @@
     "published": "2026-09-08T16:37:48.208765+00:00",
     "duration_hms": "0:08:09",
     "size_bytes": 5872653
+  },
+  {
+    "date": "2026-09-09",
+    "title": "2026-09-09: Quiet news day",
+    "description": "Major world events today (U.S. strikes on Iranian tankers, UK/Canada/France sanctions on Israeli settlements, 25th anniversary 9/11 observances, U.S.\u2013Canada trade escalation) fall below your coverage threshold for world news\u2014which you reserve for genuinely exceptional developments only. Premier League has no matches scheduled today (Matchweek 3 was last weekend). The Spanish Grand Prix is September 11\u201313, not today. Hacker News currently carries no systems-level story deep enough to feature for a systems engineer already caught up on mainstream tech. Archive.org maintenance posts and AI-tooling roundups don't meet the bar.",
+    "file": "episodes/2026-09-09.mp3",
+    "published": "2026-09-09T14:36:20.169250+00:00",
+    "duration_hms": "0:00:26",
+    "size_bytes": 321453
   }
 ]

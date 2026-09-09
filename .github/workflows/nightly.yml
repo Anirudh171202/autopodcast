@@ -10,11 +10,15 @@ on:
     #
     # Both are offset a few minutes past the hour deliberately — GitHub's own
     # docs warn that schedules firing exactly on the hour queue behind
-    # everyone else's, causing multi-hour delays. Observed delay on this repo
-    # has been ~2.5-3 hours even off-the-hour, so this targets 5am Pacific
-    # rather than 7am, to actually land close to 7am once delayed.
-    - cron: "13 13 * * *" # ~5am PST (UTC-8) — standard time, roughly Nov-Mar
-    - cron: "13 12 * * *" # ~5am PDT (UTC-7) — daylight time, roughly Mar-Nov
+    # everyone else's, causing multi-hour delays. Observed actual landing
+    # time across 5 days at a 5am-Pacific nominal target: consistently
+    # 9:30-10:45am Pacific, a similar window to when a 7am-nominal target
+    # landed before that. That suggests this repo's free-tier scheduled-run
+    # queue converges on a wall-clock window rather than a fixed offset from
+    # the requested time — so pushing earlier may have diminishing returns,
+    # but 3am is the next thing worth trying.
+    - cron: "13 11 * * *" # ~3am PST (UTC-8) — standard time, roughly Nov-Mar
+    - cron: "13 10 * * *" # ~3am PDT (UTC-7) — daylight time, roughly Mar-Nov
   workflow_dispatch: {} # lets you trigger a run manually from the Actions tab to test
 
 permissions:

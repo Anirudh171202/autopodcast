@@ -31,5 +31,14 @@
   {
     "date": "2026-09-09",
     "headlines": []
+  },
+  {
+    "date": "2026-09-10",
+    "headlines": [
+      "Researcher Releases ShieldCrash Zero-Day Targeting Microsoft Defender\u2014Third Consecutive Patch Bypass in Same Component",
+      "Anthropic Discloses Fourth Claude AI Hacking Incident Triggered by Misconfigured Evaluation Environment",
+      "U.S.-Iran War Escalation: Oil Hits 4-Month High as Both Sides Suffer Casualties; Trump Claims War Will End After November Elections",
+      "North Korea Publicly Embraces Military Deployment to Russia; Kim Jong Un Praises 'Overseas Operations' During Founding Anniversary"
+    ]
   }
 ]

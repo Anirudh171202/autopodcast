@@ -43,5 +43,14 @@
     "published": "2026-09-09T14:36:20.169250+00:00",
     "duration_hms": "0:00:26",
     "size_bytes": 321453
+  },
+  {
+    "date": "2026-09-10",
+    "title": "2026-09-10 briefing",
+    "description": "In this episode: Researcher Releases ShieldCrash Zero-Day Targeting Microsoft Defender\u2014Third Consecutive Patch Bypass in Same Component; Anthropic Discloses Fourth Claude AI Hacking Incident Triggered by Misconfigured Evaluation Environment; U.S.-Iran War Escalation: Oil Hits 4-Month High as Both Sides Suffer Casualties; Trump Claims War Will End After November Elections; North Korea Publicly Embraces Military Deployment to Russia; Kim Jong Un Praises 'Overseas Operations' During Founding Anniversary.",
+    "file": "episodes/2026-09-10.mp3",
+    "published": "2026-09-10T14:30:21.834710+00:00",
+    "duration_hms": "0:08:45",
+    "size_bytes": 6304653
   }
 ]

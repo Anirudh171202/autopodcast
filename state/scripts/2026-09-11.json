@@ -1,0 +1,47 @@
+{
+  "items": [
+    {
+      "headline": "Shopify Migrates Shop App from React Native to Native Swift/Kotlin in 12 Weeks with AI Agents",
+      "topic": "Systems/Mobile Software Engineering",
+      "bullets": [
+        "Shop app rebuilt fully native (Swift/Kotlin) from proof-of-concept to published in 12 weeks with six engineers plus AI coding agents",
+        "New architecture (Helix) decouples business logic via CLI\u2014agents test changes in milliseconds without opening slow simulators, enabling continuous checkpoint-validated rewrites",
+        "Results: Android cold startup +50% faster, crash rate -90%, app size reduced 109MB; main Shopify app (300+ screens) now underway, full fleet follow"
+      ],
+      "source": "Shopify Engineering",
+      "source_date": "September 10, 2026",
+      "novelty": "Shopify reversed its 2020 bet on React Native six years in, pivoting entirely to native because AI agents made the cost of building twice cheaper than maintaining a shared codebase\u2014the first major platform company to operationalize agent-driven architecture at scale.",
+      "importance": 5
+    },
+    {
+      "headline": "DeepSeek Releases V4.1-Flash, Retires V4-Pro via Automatic Routing at Lower Cost",
+      "topic": "AI Models",
+      "bullets": [
+        "DeepSeek released V4.1-Flash on September 10 as 552B-parameter multimodal MoE with native image understanding, 8B active on input/16B on output",
+        "From September 14, all deepseek-v4-pro API requests route to V4.1-Flash at Flash prices (11\u201357% cheaper depending on token type) until V4.1-Pro ships",
+        "Open weights published under MIT on Hugging Face; model outperforms V4-Pro on performance, cost, speed, and latency according to internal/external testing"
+      ],
+      "source": "DeepSeek API changelog, NextWeb",
+      "source_date": "September 10, 2026",
+      "novelty": "DeepSeek shipped a smaller, cheaper model that operationally replaces its flagship in production, signaling a shift in how frontier labs handle model deprecation and the viability of mixture-of-experts for both capability and cost efficiency.",
+      "importance": 4
+    },
+    {
+      "headline": "Bay Area Weather: Clear skies with cooler temperatures; relief from multi-day heat wave",
+      "topic": "Weather",
+      "bullets": [
+        "Friday temperatures dropping from Thursday's 90s\u2013100s to just the 80s at warmest, with continued clear conditions",
+        "Heat Advisory from prior days expiring; coast and inland both seeing relief as cooling trend establishes through weekend",
+        "Saturday forecast shows further cooling to mostly 70s across Bay Area, including inland"
+      ],
+      "source": "KRON4 (Sep 11 5:43 AM), National Weather Service",
+      "source_date": "September 11, 2026",
+      "novelty": "Heat relief arrived on schedule Friday after a sustained high-temperature period; weekend will stay cool.",
+      "importance": 1
+    }
+  ],
+  "deep_dive_headline": "Shopify Migrates Shop App from React Native to Native Swift/Kotlin in 12 Weeks with AI Agents",
+  "insufficient_material": false,
+  "editor_note": null,
+  "weather": "Friday morning dawning clear with highs dropping from the 90s-100s down to the 80s, ending the multi-day heat wave with cooling trend continuing through the weekend."
+}

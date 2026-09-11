@@ -52,5 +52,14 @@
     "published": "2026-09-10T14:30:21.834710+00:00",
     "duration_hms": "0:08:45",
     "size_bytes": 6304653
+  },
+  {
+    "date": "2026-09-11",
+    "title": "2026-09-11 briefing",
+    "description": "In this episode: Shopify Migrates Shop App from React Native to Native Swift/Kotlin in 12 Weeks with AI Agents; DeepSeek Releases V4.1-Flash, Retires V4-Pro via Automatic Routing at Lower Cost; Bay Area Weather: Clear skies with cooler temperatures; relief from multi-day heat wave.",
+    "file": "episodes/2026-09-11.mp3",
+    "published": "2026-09-11T14:28:50.347206+00:00",
+    "duration_hms": "0:08:49",
+    "size_bytes": 6358509
   }
 ]

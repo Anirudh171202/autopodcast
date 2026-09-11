@@ -40,5 +40,13 @@
       "U.S.-Iran War Escalation: Oil Hits 4-Month High as Both Sides Suffer Casualties; Trump Claims War Will End After November Elections",
       "North Korea Publicly Embraces Military Deployment to Russia; Kim Jong Un Praises 'Overseas Operations' During Founding Anniversary"
     ]
+  },
+  {
+    "date": "2026-09-11",
+    "headlines": [
+      "Shopify Migrates Shop App from React Native to Native Swift/Kotlin in 12 Weeks with AI Agents",
+      "DeepSeek Releases V4.1-Flash, Retires V4-Pro via Automatic Routing at Lower Cost",
+      "Bay Area Weather: Clear skies with cooler temperatures; relief from multi-day heat wave"
+    ]
   }
 ]

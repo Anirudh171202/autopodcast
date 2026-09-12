@@ -61,5 +61,14 @@
     "published": "2026-09-11T14:28:50.347206+00:00",
     "duration_hms": "0:08:49",
     "size_bytes": 6358509
+  },
+  {
+    "date": "2026-09-12",
+    "title": "2026-09-12: Quiet news day",
+    "description": "Saturday Sep 12: At 6:37am PDT, F1 Spanish Grand Prix qualifying at Madring hasn't started yet (it runs 3pm UK / 10am ET / 7am PT). Premier League matches are in progress or completed during afternoon UTC times (3pm-9pm BST), so fixtures don't finish until evening UK time / early afternoon PDT. Results won't be reliably available until later today. Hacker News front pages currently inaccessible. Without concrete late-breaking results from today's sporting events or tech developments, and unable to directly access today's HN stories, there is insufficient material for an episode. Recommend checking back after qualifying concludes and EPL matches complete.",
+    "file": "episodes/2026-09-12.mp3",
+    "published": "2026-09-12T13:37:55.407649+00:00",
+    "duration_hms": "0:00:29",
+    "size_bytes": 352557
   }
 ]

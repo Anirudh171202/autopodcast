@@ -79,5 +79,14 @@
     "published": "2026-09-13T14:24:16.792888+00:00",
     "duration_hms": "0:00:28",
     "size_bytes": 344781
+  },
+  {
+    "date": "2026-09-14",
+    "title": "2026-09-14: Microsoft Patch Tuesday: 974 CVEs including two actively exploited zero-days",
+    "description": "In this episode: Microsoft Patch Tuesday: 974 CVEs including two actively exploited zero-days; GitLab CVE-2026-85706 critical path traversal flaw now under active exploitation; Multiple third-party infrastructure flaws joining active exploitation wave; BlueMoon exploit chain: Chromium V8 + Windows kernel escalation in active campaigns; Bay Area weather: Cooler with 60s coast, 70s bay, 80s inland; dry skies throughout.",
+    "file": "episodes/2026-09-14.mp3",
+    "published": "2026-09-14T16:25:20.081135+00:00",
+    "duration_hms": "0:09:02",
+    "size_bytes": 6507981
   }
 ]

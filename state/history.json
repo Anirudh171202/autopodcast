@@ -56,5 +56,15 @@
   {
     "date": "2026-09-13",
     "headlines": []
+  },
+  {
+    "date": "2026-09-14",
+    "headlines": [
+      "Microsoft Patch Tuesday: 974 CVEs including two actively exploited zero-days",
+      "GitLab CVE-2026-85706 critical path traversal flaw now under active exploitation",
+      "Multiple third-party infrastructure flaws joining active exploitation wave",
+      "BlueMoon exploit chain: Chromium V8 + Windows kernel escalation in active campaigns",
+      "Bay Area weather: Cooler with 60s coast, 70s bay, 80s inland; dry skies throughout"
+    ]
   }
 ]

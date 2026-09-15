@@ -66,5 +66,16 @@
       "BlueMoon exploit chain: Chromium V8 + Windows kernel escalation in active campaigns",
       "Bay Area weather: Cooler with 60s coast, 70s bay, 80s inland; dry skies throughout"
     ]
+  },
+  {
+    "date": "2026-09-15",
+    "headlines": [
+      "JFrog Artifactory Remote Exploitation Chain Allows Admin Takeover and Backdoor Installation",
+      "Indonesia Ferry Disaster: 130+ Still Missing After Overnight Java Sea Capsizing",
+      "Houthi Rebels Capture Strategic Island in Bab el-Mandeb Strait; Saudi Arabia Responds with Pipeline Closure and Oil Spiking Past $100/Barrel",
+      "Ubuntu 26.10 Completes Rust-Based coreutils Migration",
+      "Android September 2026 Security Updates: 180 Vulnerabilities Patched Across System, Framework, and Kernel",
+      "K-Server Conjecture Proved: Long-Standing Online Algorithm Problem Solved"
+    ]
   }
 ]

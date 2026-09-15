@@ -88,5 +88,14 @@
     "published": "2026-09-14T16:25:20.081135+00:00",
     "duration_hms": "0:09:02",
     "size_bytes": 6507981
+  },
+  {
+    "date": "2026-09-15",
+    "title": "2026-09-15 briefing",
+    "description": "In this episode: JFrog Artifactory Remote Exploitation Chain Allows Admin Takeover and Backdoor Installation; Indonesia Ferry Disaster: 130+ Still Missing After Overnight Java Sea Capsizing; Houthi Rebels Capture Strategic Island in Bab el-Mandeb Strait; Saudi Arabia Responds with Pipeline Closure and Oil Spiking Past $100/Barrel; Ubuntu 26.10 Completes Rust-Based coreutils Migration; Android September 2026 Security Updates: 180 Vulnerabilities Patched Across System, Framework, and Kernel; K-Server Conjecture Proved: Long-Standing Online Algorithm Problem Solved.",
+    "file": "episodes/2026-09-15.mp3",
+    "published": "2026-09-15T15:05:01.638880+00:00",
+    "duration_hms": "0:08:48",
+    "size_bytes": 6340941
   }
 ]

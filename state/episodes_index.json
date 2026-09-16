@@ -97,5 +97,14 @@
     "published": "2026-09-15T15:05:01.638880+00:00",
     "duration_hms": "0:08:48",
     "size_bytes": 6340941
+  },
+  {
+    "date": "2026-09-16",
+    "title": "2026-09-16: Quiet news day",
+    "description": "No genuine systems software updates, novel HN stories, upcoming Premier League matches, or consequential world developments in the last 24 hours that haven't been previously covered or announced. Bay Area weather is the only standing feature included.",
+    "file": "episodes/2026-09-16.mp3",
+    "published": "2026-09-16T14:59:14.254602+00:00",
+    "duration_hms": "0:00:24",
+    "size_bytes": 290925
   }
 ]

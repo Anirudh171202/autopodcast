@@ -106,5 +106,14 @@
     "published": "2026-09-16T14:59:14.254602+00:00",
     "duration_hms": "0:00:24",
     "size_bytes": 290925
+  },
+  {
+    "date": "2026-09-17",
+    "title": "2026-09-17: Quiet news day",
+    "description": "Thursday morning in mid-September is typically thin for news. The HN front page from Sept 15 showed older stories (Signal registration, Microsoft patches, AI tools) already in your prior coverage. F1 Spanish GP coverage is from last week; no race scheduled today. No Premier League matches today. Bay Area computer systems/security landscape quiet on new developments from the last 24 hours.",
+    "file": "episodes/2026-09-17.mp3",
+    "published": "2026-09-17T15:00:50.350517+00:00",
+    "duration_hms": "0:00:26",
+    "size_bytes": 315405
   }
 ]

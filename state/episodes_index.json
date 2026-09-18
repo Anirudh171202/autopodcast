@@ -115,5 +115,14 @@
     "published": "2026-09-17T15:00:50.350517+00:00",
     "duration_hms": "0:00:26",
     "size_bytes": 315405
+  },
+  {
+    "date": "2026-09-18",
+    "title": "2026-09-18: OpenAI Internal Repository Compromise via Heap Overflow + SSO Misconfiguration",
+    "description": "In this episode: OpenAI Internal Repository Compromise via Heap Overflow + SSO Misconfiguration; Jemalloc 5.4.0 Released: Major Portability Overhaul and Tcache Adaptive Refill Logic; CrowdSec Source Code Leak: Private GitHub Repositories Compromised in May via TanStack Backdoor; Brentford vs Chelsea Premier League Match\u2014Scheduled for September 18 at 19:00 UTC; Bay Area Weather: Mostly Sunny with Lingering Coast Clouds, Warming Through Saturday.",
+    "file": "episodes/2026-09-18.mp3",
+    "published": "2026-09-18T14:34:30.696283+00:00",
+    "duration_hms": "0:09:11",
+    "size_bytes": 6621741
   }
 ]

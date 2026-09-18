@@ -85,5 +85,15 @@
   {
     "date": "2026-09-17",
     "headlines": []
+  },
+  {
+    "date": "2026-09-18",
+    "headlines": [
+      "OpenAI Internal Repository Compromise via Heap Overflow + SSO Misconfiguration",
+      "Jemalloc 5.4.0 Released: Major Portability Overhaul and Tcache Adaptive Refill Logic",
+      "CrowdSec Source Code Leak: Private GitHub Repositories Compromised in May via TanStack Backdoor",
+      "Brentford vs Chelsea Premier League Match\u2014Scheduled for September 18 at 19:00 UTC",
+      "Bay Area Weather: Mostly Sunny with Lingering Coast Clouds, Warming Through Saturday"
+    ]
   }
 ]

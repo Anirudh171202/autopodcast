@@ -124,5 +124,14 @@
     "published": "2026-09-18T14:34:30.696283+00:00",
     "duration_hms": "0:09:11",
     "size_bytes": 6621741
+  },
+  {
+    "date": "2026-09-19",
+    "title": "2026-09-19: Quiet news day",
+    "description": "The listener has already been briefed on all significant computer systems developments from the last 24 hours in prior episodes. September 2026 Microsoft Patch Tuesday and its associated flaws (the 974 CVEs, including network-reachable RCE in Netlogon CVE-2026-72982 and Office Preview Pane exploits) were covered last week. The fresh mentions of Docker Sandboxes CVE and Click2Shell WordPress exploits are real, but only ~12 hours old and would require deeper investigation to see if they represent genuinely new attacks or just disclosure timing. Four Linux kernel flaws with public exploits (DirtyAH6, TUNderflow, PPPoEject, DiagSpill) mentioned in recent posts do not appear to have new exploitation events \u2014 they are proof-of-concept disclosures, not active wild campaigns. No Formula 1 race is scheduled for today; next race is Singapore (Sept 25-27). No Premier League matches are listed for today, and Brentford vs Chelsea already concluded on Sept 18. No new major world news cleared the bar. The Hacker News front page results are mostly old trend pieces or republished stories; no live front page snapshot is accessible. This is genuinely a thin news day across all priority topics.",
+    "file": "episodes/2026-09-19.mp3",
+    "published": "2026-09-19T13:56:31.777999+00:00",
+    "duration_hms": "0:00:31",
+    "size_bytes": 380781
   }
 ]

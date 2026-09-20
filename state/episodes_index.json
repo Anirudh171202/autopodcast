@@ -133,5 +133,14 @@
     "published": "2026-09-19T13:56:31.777999+00:00",
     "duration_hms": "0:00:31",
     "size_bytes": 380781
+  },
+  {
+    "date": "2026-09-20",
+    "title": "2026-09-20: Quiet news day",
+    "description": "Sunday morning, 7:13 AM: The Hacker News API is not directly accessible; front page mirror and news roundups show older snapshots (Sept 15-18) with no fresh stories accessible for September 20. Premier League and F1 have no matches scheduled today. World news appears scattered in bulletins with no single story meeting the 'genuinely major' bar. The Liverpool vs. Bournemouth match mentioned in one article occurs on September 20, but it hasn't happened yet (it's scheduled for 3 PM UK time / 7 AM PDT start). Will search once more for any last-minute system developments or Hacker News today-specific content before finalizing.",
+    "file": "episodes/2026-09-20.mp3",
+    "published": "2026-09-20T14:14:27.505233+00:00",
+    "duration_hms": "0:00:28",
+    "size_bytes": 336429
   }
 ]

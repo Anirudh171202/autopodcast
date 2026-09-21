@@ -142,5 +142,14 @@
     "published": "2026-09-20T14:14:27.505233+00:00",
     "duration_hms": "0:00:28",
     "size_bytes": 336429
+  },
+  {
+    "date": "2026-09-21",
+    "title": "2026-09-21: Quiet news day",
+    "description": "Monday morning, September 21, 2026: The day is still early (9:29 AM PDT), and search results on news topics have been sparse and mostly older or aggregated content. No Premier League matches are scheduled for today (matches are updated as of Sept 20; the next round appears to be in early October). No Formula 1 race is scheduled today. Hacker News front page is not directly accessible via search but aggregator sites show older posts from mid-September. World news includes ongoing Iran-US tensions and Ukraine drone strikes, but these are developments in ongoing situations already well-known, not major new announcements that would constitute material updates. Systems/software engineering results contain press releases from ZWSOFT (marketing event) and general trend pieces from January 2026. Nothing clears the bar for genuine breaking news in the last 24 hours for a listener who follows these topics closely. Given the early hour and inherent lag in news indexing, recommend either checking back after 11 AM PDT or treating this as a weather-only episode if episode timing is flexible.",
+    "file": "episodes/2026-09-21.mp3",
+    "published": "2026-09-21T16:30:06.593055+00:00",
+    "duration_hms": "0:00:24",
+    "size_bytes": 296685
   }
 ]

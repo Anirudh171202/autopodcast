@@ -151,5 +151,14 @@
     "published": "2026-09-21T16:30:06.593055+00:00",
     "duration_hms": "0:00:24",
     "size_bytes": 296685
+  },
+  {
+    "date": "2026-09-22",
+    "title": "2026-09-22: Quiet news day",
+    "description": "No new Premier League matches today (next match is Sheffield United vs Manchester City on September 26). No Formula 1 races this week (Azerbaijan GP starts September 24). No major systems software releases in the last 24 hours that meet the news bar for a systems engineer. The Hacker News front page could not be accessed directly to retrieve today's top stories. Weather forecast is available.",
+    "file": "episodes/2026-09-22.mp3",
+    "published": "2026-09-22T15:30:21.603375+00:00",
+    "duration_hms": "0:00:28",
+    "size_bytes": 343053
   }
 ]

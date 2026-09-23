@@ -160,5 +160,14 @@
     "published": "2026-09-22T15:30:21.603375+00:00",
     "duration_hms": "0:00:28",
     "size_bytes": 343053
+  },
+  {
+    "date": "2026-09-23",
+    "title": "2026-09-23 briefing",
+    "description": "In this episode: Modern Filesystem Benchmarks: Btrfs/ZFS/Bcachefs Under Real-World Workloads Released.",
+    "file": "episodes/2026-09-23.mp3",
+    "published": "2026-09-23T15:03:37.367522+00:00",
+    "duration_hms": "0:08:22",
+    "size_bytes": 6027885
   }
 ]

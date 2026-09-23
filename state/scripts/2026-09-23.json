@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "headline": "Modern Filesystem Benchmarks: Btrfs/ZFS/Bcachefs Under Real-World Workloads Released",
+      "topic": "Systems Software",
+      "bullets": [
+        "Bartosz Fenski published comprehensive benchmarks testing bcachefs, btrfs, and ZFS on workloads classic benchmarks skip\u2014snapshots, aging, compression, redundancy layouts, encryption, and fsync tail latency under degraded operation.",
+        "First real hardware results published after obtaining machines from Hetzner; GitHub Actions runners used for 590+ benchmark runs with calibration to filter unreliable VMs.",
+        "Benchmarks reveal substantial performance gaps between filesystems on actual multi-device deployments, particularly for CoW operations and snapshot aging\u2014directly addressing gaps in standard Phoronix single-device synthetic tests that miss actual production deployment patterns."
+      ],
+      "source": "Hacker News (news.ycombinator.com/item?id=49768833)",
+      "source_date": "September 22, 2026",
+      "novelty": "First published real-hardware benchmark results on actual production-class CoW filesystem workloads that classic benchmarks deliberately exclude, including degraded-mode operation and snapshot aging curves.",
+      "importance": 4
+    }
+  ],
+  "deep_dive_headline": "Modern Filesystem Benchmarks: Btrfs/ZFS/Bcachefs Under Real-World Workloads Released",
+  "insufficient_material": false,
+  "editor_note": "The bcachefs/btrfs/ZFS benchmark story from HN yesterday is solid and genuinely niche for a systems engineer\u2014it captures a day-1 systems-focused technical analysis rather than a rehash of earlier news. F1 Azerbaijan GP is September 24\u201326 (starts tomorrow, not today). Premier League updated table shows no matches played today (6 of 5 rounds completed as of Sept 20). No new major systems software releases today. Weather populated from available Bay Area forecast data.",
+  "weather": "Mostly sunny with some low clouds early in the Bay Area, high around 73\u00b0F and low around 54\u00b0F."
+}

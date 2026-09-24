@@ -117,5 +117,13 @@
     "headlines": [
       "Modern Filesystem Benchmarks: Btrfs/ZFS/Bcachefs Under Real-World Workloads Released"
     ]
+  },
+  {
+    "date": "2026-09-24",
+    "headlines": [
+      "Anthropic's Claude Autonomously Discovers CRISPR-Like Enzyme System (ART)",
+      "F5 BIG-IP APM Zero-Day (CVE-2026-94127) Under Active Exploit as Critical RCE",
+      "Three Linux Kernel CVEs Actively Exploited; CISA Emergency Deadline Passed"
+    ]
   }
 ]

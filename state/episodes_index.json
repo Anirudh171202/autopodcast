@@ -169,5 +169,14 @@
     "published": "2026-09-23T15:03:37.367522+00:00",
     "duration_hms": "0:08:22",
     "size_bytes": 6027885
+  },
+  {
+    "date": "2026-09-24",
+    "title": "2026-09-24: Anthropic's Claude Autonomously Discovers CRISPR-Like Enzyme System (ART)",
+    "description": "In this episode: Anthropic's Claude Autonomously Discovers CRISPR-Like Enzyme System (ART); F5 BIG-IP APM Zero-Day (CVE-2026-94127) Under Active Exploit as Critical RCE; Three Linux Kernel CVEs Actively Exploited; CISA Emergency Deadline Passed.",
+    "file": "episodes/2026-09-24.mp3",
+    "published": "2026-09-24T15:08:42.250317+00:00",
+    "duration_hms": "0:08:08",
+    "size_bytes": 5867757
   }
 ]
